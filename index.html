@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ht">
+<head>
+  <!-- Replaced by the value of `flutter build web --base-href`. -->
+  <base href="/sevislakay-beta/">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="SèvisLakay — Sèvis pwofesyonèl nan men w. Jwenn bòs konfyans pou travay lakay ou, peye an sekirite.">
+  <meta name="theme-color" content="#E7EBF0">
+
+  <!-- Link previews (WhatsApp, Facebook, iMessage) -->
+  <meta property="og:title" content="SèvisLakay (beta)">
+  <meta property="og:description" content="Jwenn bòs konfyans pou travay lakay ou, peye an sekirite.">
+  <meta property="og:image" content="icons/Icon-512.png">
+  <meta property="og:type" content="website">
+
+  <!-- iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="SèvisLakay">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="manifest" href="manifest.json">
+  <title>SèvisLakay</title>
+
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      background: #E7EBF0;
+    }
+
+    /* Loading screen: shown while the app downloads (it can take a few
+       seconds on 3G), removed on Flutter's first frame. */
+    #splash {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+      background: #E7EBF0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: #303943;
+      transition: opacity .4s ease;
+      z-index: 10;
+    }
+    #splash.hidden { opacity: 0; pointer-events: none; }
+
+    .splash-logo {
+      width: 112px;
+      height: 112px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #E7EBF0;
+      box-shadow: 12px 12px 24px rgba(163, 177, 198, .65),
+                  -12px -12px 24px rgba(255, 255, 255, .95);
+      animation: float 3s ease-in-out infinite;
+    }
+    .splash-logo img { width: 52px; height: 52px; }
+
+    .splash-name { font-size: 24px; font-weight: 700; letter-spacing: .2px; }
+
+    .splash-bar {
+      width: 160px;
+      height: 10px;
+      border-radius: 10px;
+      background: #E7EBF0;
+      box-shadow: inset 3px 3px 6px rgba(163, 177, 198, .55),
+                  inset -3px -3px 6px rgba(255, 255, 255, .95);
+      overflow: hidden;
+    }
+    .splash-bar::after {
+      content: "";
+      display: block;
+      width: 40%;
+      height: 100%;
+      border-radius: 10px;
+      background: linear-gradient(90deg, #006CFF, #00CFFF);
+      animation: slide 1.3s ease-in-out infinite;
+    }
+
+    .splash-hint { font-size: 13px; color: #7D8790; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    @keyframes slide {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(260%); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .splash-logo, .splash-bar::after { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <div id="splash" role="status" aria-live="polite">
+    <div class="splash-logo"><img src="icons/splash-logo.png" alt=""></div>
+    <div class="splash-name">SèvisLakay</div>
+    <div class="splash-bar"></div>
+    <div class="splash-hint">Ap chaje… / Chargement… / Loading…</div>
+  </div>
+
+  <noscript>
+    <p style="font-family:sans-serif;text-align:center;margin-top:40vh">
+      Aktive JavaScript pou itilize SèvisLakay.
+    </p>
+  </noscript>
+
+  <script>
+    window.addEventListener('flutter-first-frame', function () {
+      var splash = document.getElementById('splash');
+      if (!splash) return;
+      splash.classList.add('hidden');
+      setTimeout(function () { splash.remove(); }, 450);
+    });
+  </script>
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>
